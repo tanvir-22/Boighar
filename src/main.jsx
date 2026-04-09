@@ -1,20 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-
-
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element:"welcome "
-  },
-]);
-
-
+import {router} from './Router/router'
+import { RouterProvider } from 'react-router'
+import BookProvider from './Context/BookProvider'
+import { ToastContainer } from 'react-toastify'
 
 createRoot(document.getElementById('root')).render(
-   <RouterProvider router={router} />,
+   <BookProvider>
+      <RouterProvider router={router} >
+       
+      </RouterProvider>
+       <ToastContainer />
+   </BookProvider>
 )
