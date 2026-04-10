@@ -1,14 +1,17 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-
+import {getAllMarkedBookFromLocalDb,setAllMarkedBookToLocalDb} from '../util/localStorage'
 export const BookContext = createContext();
 
 const BookProvider = ({ children }) => {
-    const [markedBook, setMarkedBook] = useState([]);
+    const [markedBook, setMarkedBook] = useState(()=>getAllMarkedBookFromLocalDb());
     const [wishList,setWishList] = useState([]);
-    const handleRead = (currentBook) => {
 
+    console.log(markedBook);
+
+    const handleRead = (currentBook) => {
+            setAllMarkedBookToLocalDb(currentBook);
         const isExist = markedBook.find((item) => item.bookId == currentBook.bookId)
 
         if (isExist) {
