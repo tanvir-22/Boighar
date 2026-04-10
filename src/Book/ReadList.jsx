@@ -20,15 +20,24 @@ const ReadList = ({ sortingType }) => {
 
 
     return (
-        <>
+        
 
-            {
+           <>
+           
+           {
+               filteredMarkedBook.length>0 ?
                 filteredMarkedBook.map((item) => (
                     <ListCard item={item} />
-                ))
+                )) :<div>
+                <h1 className='text-center'>No book added to readlist</h1>
+               </div>
+               
             }
+           </>
+             
+           
 
-        </>
+        
     )
 }
 
